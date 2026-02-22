@@ -1,7 +1,7 @@
 import axios from "axios"
 import { Timestamp } from "next/dist/server/lib/cache-handlers/types"
 
-const AUTH_KEY = process.env.AUTH_KEY
+const AUTH_KEY = process.env.RAI_KEY
 const base_url = "https://api.chatmdr.eu/v1"
 
 export type Message = {

@@ -16,6 +16,9 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <div className="header sticky">
+          <h1>Raiana Assignment - JK</h1>
+        </div>
         {children}
       </body>
     </html>
