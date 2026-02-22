@@ -2,6 +2,7 @@
 import Image from "next/image";
 import file_icon from "@/public/file_icon.svg";
 import submit_icon from "@/public/submit_icon.svg";
+import { InputHTMLAttributes, useRef } from "react";
 
 const submitForm = (data: FormData) => {
   console.log(data);
@@ -9,6 +10,13 @@ const submitForm = (data: FormData) => {
 }
 
 const InputBox = () => {
+  const fileInput = useRef(null);
+  const fileButtonClick = () => {
+    if (fileInput.current) {
+      (fileInput.current as any).click();
+    }
+  };
+
   return (
     <form action={submitForm}
       className="container input-box flex flex-row sticky bottom-0 w-{90%} justify-center justify-self-center self-bottom">
@@ -17,7 +25,10 @@ const InputBox = () => {
         placeholder="Paste your text here or upload your pdf file."
       />
       <ul className="flex flex-row gap-1 m-2">
-        <button type="button" className="bg-amber-50 h-fit">
+        <button type="button" className="bg-amber-50 h-fit"
+          onClick={fileButtonClick}>
+          <input type="file" name="file" id="" ref={fileInput}
+            className="hidden" />
           <Image src={file_icon}
             width={20}
             height={20}
