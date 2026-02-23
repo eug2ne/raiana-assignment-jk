@@ -28,7 +28,7 @@ export type ChatResBody = {
   }
 }
 
-const postChat = async (reqBody: ChatReqBody): Promise<ChatResBody> => {
+export const postChat = async (reqBody: ChatReqBody): Promise<ChatResBody> => {
   const result: ChatResBody = await axios.post(base_url + '/chat/completions', {
     model: "chatmdr-fast-openai",
     messages: [{
@@ -43,5 +43,3 @@ const postChat = async (reqBody: ChatReqBody): Promise<ChatResBody> => {
 
   return result
 }
-
-export default postChat;

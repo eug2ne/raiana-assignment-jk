@@ -4,8 +4,6 @@ import file_icon from "@/public/file_icon.svg";
 import submit_icon from "@/public/submit_icon.svg";
 import { useRef } from "react";
 
-// TODO: add indicator for file input
-
 const submitForm = (data: FormData) => {
   console.log(data);
   // TODO: create submit function (make post request to ChatMDR API)

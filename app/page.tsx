@@ -6,9 +6,10 @@ import { redirect } from "next/navigation";
 import { Message } from "./api/chatmdr";
 import TextBox from "./components/TextBox";
 import InputBox from "./components/InputBox";
-import mock_data from "@/app/api/mock_data.json";
+import { useState } from "react";
 
 export default async function Home() {
+  // auth
   const cookieStore = await cookies();
   const authenticated: RequestCookie | undefined = cookieStore.get("Authenticated");
 
@@ -17,14 +18,21 @@ export default async function Home() {
     redirect("/login");
   }
 
+  // messages data
+  const [messages, SetMessages] = useState([]);
+  const handleSubmit = (new_m: Message): void => {
+    // FIXME: how to add new_m to messages data
+    SetMessages([]);
+  }
+
   return (
     <main className="w-screen h-screen">
       <div className="text-area relative w-5/6 h-3/4 justify-self-center p-1 overflow-y-auto">
-        {mock_data.messages.map((m: Message, i: number) => (
+        {messages.map((m: Message, i: number) => (
           <TextBox key={i} message={m}/>
         ))}
       </div>
-      <InputBox />
+      <InputBox onSubmit={handleSubmit} />
     </main>
   );
 }
